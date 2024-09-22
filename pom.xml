@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.8</version> <!-- Updated version -->
+        <version>2.6.8</version> <!-- Spring Boot version -->
         <relativePath/>
     </parent>
     <groupId>com.minikube.sample</groupId>
@@ -19,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
+        <spring-cloud.version>2021.0.0</spring-cloud.version> <!-- Update to Spring Cloud version -->
     </properties>
 
     <dependencies>
@@ -33,7 +34,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-kubernetes-config</artifactId>
-            <version>1.2.6</version> <!-- Updated to a valid version -->
+            <version>1.1.2.RELEASE</version> <!-- Use property for version -->
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
