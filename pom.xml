@@ -45,12 +45,12 @@
             <scope>provided</scope>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -58,25 +58,18 @@
         </dependency>
     </dependencies>
 
-    <configuration>
-      <compilerArgs>
-        --add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED
-      </compilerArgs>
-    </configuration>
-
-
-   <build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.9.0</version> <!-- Update to a stable version -->
-            <configuration>
-                <source>1.8</source> <!-- Or your required Java version -->
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-    </plugins>
-   </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.9.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
