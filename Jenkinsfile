@@ -9,7 +9,7 @@ pipeline {
 
     stages {
         stage("Git Checkout") {
-            when { expression { params.action == 'Create' } } // Changed 'param' to 'params'
+            when { expression { params.action == 'Create' } }
             steps {
                 gitCheckout(
                     branch: 'main', 
@@ -19,7 +19,7 @@ pipeline {
         }
 
         stage("Unit Test Maven") {
-            when { expression { params.action == 'Create' } } // Changed 'param' to 'params'
+            when { expression { params.action == 'Create' } }
             steps {
                 script {
                     mvnTest()
@@ -28,7 +28,7 @@ pipeline {
         }
 
         stage("Integration Test Maven") {
-            when { expression { params.action == 'Create' } } // Changed 'param' to 'params'
+            when { expression { params.action == 'Create' } }
             steps {
                 script {
                     mvnIntegrationTest()
@@ -36,33 +36,42 @@ pipeline {
             } 
         }
 
-        stage('Static code analysis: Sonarqube'){
-         when { expression {  params.action == 'create' } }
-            steps{
-               script{
-                   
-                   def SonarQubecredentialsId = 'sonar-api'
-                   staticCodeAnalysis(SonarQubecredentialsId)
-               }
+        stage('Static Code Analysis: SonarQube') {
+            when { expression { params.action == 'Create' } }
+            steps {
+                script {
+                    def SonarQubecredentialsId = 'sonar-api'
+                    staticCodeAnalysis(SonarQubecredentialsId)
+                }
             }
         }
-        stage('Quality Gate Status Check : Sonarqube'){
-         when { expression {  params.action == 'create' } }
-            steps{
-               script{
-                   
-                   def SonarQubecredentialsId = 'sonar-api'
-                   QualityGateStatus(SonarQubecredentialsId)
-               }
+
+        stage('Quality Gate Status Check: SonarQube') {
+            when { expression { params.action == 'Create' } }
+            steps {
+                script {
+                    def SonarQubecredentialsId = 'sonar-api'
+                    QualityGateStatus(SonarQubecredentialsId)
+                }
             }
         }
-        stage('Maven Build : maven'){
-         when { expression {  params.action == 'create' } }
-            steps{
-               script{
-                   
-                   mvnBuild()
-               }
+
+        stage('Maven Build') {
+            when { expression { params.action == 'Create' } }
+            steps {
+                script {
+                    mvnBuild()
+                }
+            }
+        }
+
+        // Optionally, you can add a stage for deletion if needed
+        stage("Delete Resources") {
+            when { expression { params.action == 'Delete' } }
+            steps {
+                script {
+                    // Add your deletion logic here
+                }
             }
         }
     }
