@@ -64,15 +64,5 @@ pipeline {
                 }
             }
         }
-
-        // Optionally, you can add a stage for deletion if needed
-        stage("Delete Resources") {
-            when { expression { params.action == 'Delete' } }
-            steps {
-                script {
-                    // Add your deletion logic here
-                }
-            }
-        }
     }
 }
