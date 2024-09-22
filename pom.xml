@@ -58,19 +58,20 @@
         </dependency>
     </dependencies>
 
-    <build>
+<build>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version> <!-- Update to a compatible version -->
+            <version>3.9.0</version> <!-- Update to a stable version -->
             <configuration>
-                <source>17</source> <!-- Change as per your Java version -->
-                <target>17</target>
+                <source>1.8</source> <!-- Or your required Java version -->
+                <target>1.8</target>
             </configuration>
         </plugin>
     </plugins>
 </build>
+
 
 
 </project>
