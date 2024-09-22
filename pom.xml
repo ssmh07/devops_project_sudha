@@ -58,7 +58,14 @@
         </dependency>
     </dependencies>
 
-<build>
+    <configuration>
+      <compilerArgs>
+        --add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED
+      </compilerArgs>
+    </configuration>
+
+
+   <build>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -70,8 +77,6 @@
             </configuration>
         </plugin>
     </plugins>
-</build>
-
-
+   </build>
 
 </project>
