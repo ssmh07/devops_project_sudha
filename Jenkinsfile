@@ -36,14 +36,34 @@ pipeline {
             } 
         }
 
-        stage("Static Code Analysis: SonarQube") {
-            when { expression { params.action == 'Create' } } // Changed 'param' to 'params'
-            steps {
-                script {
-                    def SonarQubecredentialsId = 'sonar-api'
-                    staticCodeAnalysis(SonarQubecredentialsId)
-                }
-            } 
+        stage('Static code analysis: Sonarqube'){
+         when { expression {  params.action == 'create' } }
+            steps{
+               script{
+                   
+                   def SonarQubecredentialsId = 'sonar-api'
+                   staticCodeAnalysis(SonarQubecredentialsId)
+               }
+            }
+        }
+        stage('Quality Gate Status Check : Sonarqube'){
+         when { expression {  params.action == 'create' } }
+            steps{
+               script{
+                   
+                   def SonarQubecredentialsId = 'sonar-api'
+                   QualityGateStatus(SonarQubecredentialsId)
+               }
+            }
+        }
+        stage('Maven Build : maven'){
+         when { expression {  params.action == 'create' } }
+            steps{
+               script{
+                   
+                   mvnBuild()
+               }
+            }
         }
     }
 }
