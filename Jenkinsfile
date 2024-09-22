@@ -1,4 +1,4 @@
-@Library('my-shared-library') -
+@Library('my-shared-library') _
 
 pipeline{
     agent any
@@ -6,12 +6,10 @@ pipeline{
     stages{
         stage("Git Checkout"){
             steps{
-                gitCheckout{
+                gitCheckout(
                     branch: 'main', 
                     url: 'https://github.com/ssmh07/devops_project_sudha.git'
-                }
-            }
-
+                ) }
         }
     }
 }
