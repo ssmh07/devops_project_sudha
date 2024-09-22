@@ -5,8 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.8</version> <!-- Updated to a newer version -->
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.6.8</version> <!-- Updated version -->
+        <relativePath/>
     </parent>
     <groupId>com.minikube.sample</groupId>
     <artifactId>kubernetes-configmap-reload</artifactId>
@@ -33,12 +33,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-kubernetes-config</artifactId>
-            <version>2.0.0.RELEASE</version> <!-- Updated version -->
+            <version>1.2.6</version> <!-- Updated to a valid version -->
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version> <!-- Updated to the latest stable version -->
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
